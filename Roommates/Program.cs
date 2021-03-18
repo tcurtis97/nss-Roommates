@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Roommates.Models;
+using Roommates.Repositories;
+using System;
+using System.Collections.Generic;
 
 namespace Roommates
 {
@@ -22,7 +25,7 @@ namespace Roommates
                         List<Room> rooms = roomRepo.GetAll();
                         foreach (Room r in rooms)
                         {
-                            Console.WriteLine($"{room.Name} has an Id of {room.Id} and a max occupancy of {room.MaxOccupancy}");
+                            Console.WriteLine($"{r.Name} has an Id of {r.Id} and a max occupancy of {r.MaxOccupancy}");
                         }
                         Console.Write("Press any key to continue");
                         Console.ReadKey();
@@ -69,12 +72,12 @@ namespace Roommates
             Console.Clear();
 
             List<string> options = new List<string>()
-        {
-            "Show all rooms",
-            "Search for room",
-            "Add a room",
-            "Exit"
-        };
+            {
+                "Show all rooms",
+                "Search for room",
+                "Add a room",
+                "Exit"
+            };
 
             for (int i = 0; i < options.Count; i++)
             {
@@ -98,7 +101,6 @@ namespace Roommates
                     continue;
                 }
             }
-
         }
     }
 }
