@@ -1,0 +1,5 @@
+C:\Users\Tim\workspace\csharp\Roommates\Roommates\obj\Debug\net5.0\Roommates.csprojAssemblyReference.cache
+C:\Users\Tim\workspace\csharp\Roommates\Roommates\obj\Debug\net5.0\Roommates.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tim\workspace\csharp\Roommates\Roommates\obj\Debug\net5.0\Roommates.AssemblyInfoInputs.cache
+C:\Users\Tim\workspace\csharp\Roommates\Roommates\obj\Debug\net5.0\Roommates.AssemblyInfo.cs
+C:\Users\Tim\workspace\csharp\Roommates\Roommates\obj\Debug\net5.0\Roommates.csproj.CoreCompileInputs.cache
