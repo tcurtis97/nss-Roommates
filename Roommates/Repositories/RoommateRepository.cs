@@ -11,6 +11,43 @@ namespace Roommates.Repositories
     class RoommateRepository : BaseRepository
     {
         public RoommateRepository(string connectionString) : base(connectionString) { }
+        public List<Roommate> GetAll()
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT Id, FirstName, LastName FROM Roommate";
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    List<Roommate> roommates = new List<Roommate>();
+
+                    while (reader.Read())
+                    {
+                        int idValue = reader.GetInt32(reader.GetOrdinal("Id"));
+                        string roommateFirst = reader.GetString(reader.GetOrdinal("FirstName"));
+                        string roommateLast = reader.GetString(reader.GetOrdinal("LastName"));
+
+
+                        Roommate roommate = new Roommate
+                        {
+                            Id = idValue,
+                            FirstName = roommateFirst,
+                            LastName = roommateLast,
+                        };
+
+                        roommates.Add(roommate);
+                    }
+
+                    reader.Close();
+
+                    return roommates;
+                }
+            }
+        }
 
         public Roommate GetById(int id)
         {
@@ -51,7 +88,6 @@ namespace Roommates.Repositories
                 }
             }
         }
-
 
 
 
