@@ -43,7 +43,7 @@ namespace Roommates
                         break;
                     case ("Add a room"):
                         Console.Write("Room name: ");
-                        string name = Console.ReadLine();
+                        string roomName = Console.ReadLine();
 
                         Console.Write("Max occupancy: ");
                         int max = int.Parse(Console.ReadLine());
@@ -85,12 +85,9 @@ namespace Roommates
                         Console.Write("Chore name: ");
                         string choreName = Console.ReadLine();
 
-                        Console.Write("Max occupancy: ");
-                        int max = int.Parse(Console.ReadLine());
-
                         Chore choreToAdd = new Chore()
                         {
-                            Name = name,
+                            Name = choreName,
                         };
 
                         choreRepo.Insert(choreToAdd);
@@ -101,6 +98,8 @@ namespace Roommates
                         break;
 
 
+                    
+                    
                     case ("Exit"):
                         runProgram = false;
                         break;
