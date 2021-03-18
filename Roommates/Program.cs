@@ -50,7 +50,7 @@ namespace Roommates
 
                         Room roomToAdd = new Room()
                         {
-                            Name = name,
+                            Name = roomName,
                             MaxOccupancy = max
                         };
 
