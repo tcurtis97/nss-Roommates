@@ -1,6 +1,10 @@
-﻿using Microsoft.Data.SqlClient;
-using Roommates.Models;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
+using Roommates.Models;
 
 namespace Roommates.Repositories
 {
@@ -15,7 +19,6 @@ namespace Roommates.Repositories
         /// </summary>
         public RoomRepository(string connectionString) : base(connectionString) { }
 
-        // ...We'll add some methods shortly...
         /// <summary>
         ///  Get a list of all Rooms in the database
         /// </summary>
@@ -127,13 +130,20 @@ namespace Roommates.Repositories
                 conn.Open();
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
+                    // Insert the new room, output the ID of the new record
+                    // NEVER INTERPOLATE variables in a query. Always use the '@' SQL parameter instead to avoid SQL injection
                     cmd.CommandText = @"INSERT INTO Room (Name, MaxOccupancy) 
                                          OUTPUT INSERTED.Id 
                                          VALUES (@name, @maxOccupancy)";
+
+                    // Set the parameters of the query to the values we want to add
                     cmd.Parameters.AddWithValue("@name", room.Name);
                     cmd.Parameters.AddWithValue("@maxOccupancy", room.MaxOccupancy);
+
+                    // Get the ID that was just added 
                     int id = (int)cmd.ExecuteScalar();
 
+                    // Take the ID that we just got from the DB and update the object we created
                     room.Id = id;
                 }
             }
